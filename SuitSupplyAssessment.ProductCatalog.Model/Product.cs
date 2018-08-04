@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SuitSupplyAssessment.ProductCatalog.DataModel
+namespace SuitSupplyAssessment.ProductCatalog.Model
 {
     public class Product
     {
@@ -9,7 +9,7 @@ namespace SuitSupplyAssessment.ProductCatalog.DataModel
         public string Code { get; set; }
         public string Name { get; set; }
         public string Photo { get; set; }
-        public decimal MyProperty { get; set; }
+        public decimal Price { get; set; }
         public DateTime LastUpdated { get; set; }
     }
 }

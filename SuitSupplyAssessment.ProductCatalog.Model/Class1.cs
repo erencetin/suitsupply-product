@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuitSupplyAssesment.Product.DataModel
+namespace SuitSupplyAssessment.ProductCatalog.Model
 {
     public class Class1
     {

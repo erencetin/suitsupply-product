@@ -1,4 +1,4 @@
-namespace SuitSupplyAssessment.ProductCatalog.DataModel.Migrations
+namespace SuitSupplyAssessment.ProductCatalog.DataAccess.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -7,6 +7,7 @@ namespace SuitSupplyAssessment.ProductCatalog.DataModel.Migrations
     {
         public override void Up()
         {
+           // DropTable("dbo.Products");
             CreateTable(
                 "dbo.Products",
                 c => new
@@ -15,7 +16,7 @@ namespace SuitSupplyAssessment.ProductCatalog.DataModel.Migrations
                         Code = c.String(),
                         Name = c.String(),
                         Photo = c.String(),
-                        MyProperty = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         LastUpdated = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

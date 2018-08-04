@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.DataModel", "SuitSupplyAssesment.Product.DataModel\SuitSupplyAssessment.ProductCatalog.DataModel.csproj", "{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.Bussines", "SuitSupplyAssessment.Product.Bussines\SuitSupplyAssessment.ProductCatalog.Bussines.csproj", "{16B211C7-F5F9-4CE5-A685-CEF073D74712}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.UnitTest", "SuitSupply.Assessment.ProductCatalog.UnitTest\SuitSupplyAssessment.ProductCatalog.UnitTest.csproj", "{81401A13-986C-4CC7-B389-7D7FB165B389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.DataAccess", "SuitSupplyAssesment.Product.DataAccess\SuitSupplyAssessment.ProductCatalog.DataAccess.csproj", "{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.Model", "SuitSupplyAssessment.ProductCatalog.Model\SuitSupplyAssessment.ProductCatalog.Model.csproj", "{86BE4CB8-ADDF-428E-BE76-A364ADF91245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.Business", "SuitSupplyAssessment.ProductCatalog.Business\SuitSupplyAssessment.ProductCatalog.Business.csproj", "{FDB0D5FB-BFBF-42F3-B386-F7ACA07A9C45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16B211C7-F5F9-4CE5-A685-CEF073D74712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16B211C7-F5F9-4CE5-A685-CEF073D74712}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16B211C7-F5F9-4CE5-A685-CEF073D74712}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16B211C7-F5F9-4CE5-A685-CEF073D74712}.Release|Any CPU.Build.0 = Release|Any CPU
 		{81401A13-986C-4CC7-B389-7D7FB165B389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{81401A13-986C-4CC7-B389-7D7FB165B389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81401A13-986C-4CC7-B389-7D7FB165B389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81401A13-986C-4CC7-B389-7D7FB165B389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BE4CB8-ADDF-428E-BE76-A364ADF91245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BE4CB8-ADDF-428E-BE76-A364ADF91245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BE4CB8-ADDF-428E-BE76-A364ADF91245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BE4CB8-ADDF-428E-BE76-A364ADF91245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB0D5FB-BFBF-42F3-B386-F7ACA07A9C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB0D5FB-BFBF-42F3-B386-F7ACA07A9C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB0D5FB-BFBF-42F3-B386-F7ACA07A9C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB0D5FB-BFBF-42F3-B386-F7ACA07A9C45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

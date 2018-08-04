@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using SuitSupplyAssessment.ProductCatalog.DataModel;
+using SuitSupplyAssessment.ProductCatalog.Model;
+using SuitSupplyAssessment.ProductCatalog.DataAccess;
 
 namespace SuitSupplyAssessment.ProductCatalog.UnitTest
 {

@@ -1,19 +1,18 @@
-namespace SuitSupplyAssessment.ProductCatalog.DataModel.Migrations
+namespace SuitSupplyAssessment.ProductCatalog.DataAccess.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SuitSupplyAssessment.ProductCatalog.DataModel.ProductContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SuitSupplyAssessment.ProductCatalog.DataAccess.ProductContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "SuitSupplyAssessment.ProductCatalog.DataModel.ProductContext";
         }
 
-        protected override void Seed(SuitSupplyAssessment.ProductCatalog.DataModel.ProductContext context)
+        protected override void Seed(SuitSupplyAssessment.ProductCatalog.DataAccess.ProductContext context)
         {
             //  This method will be called after migrating to the latest version.
 

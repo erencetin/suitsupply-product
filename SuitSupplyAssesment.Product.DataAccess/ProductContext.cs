@@ -1,7 +1,8 @@
 using System;
 using System.Data.Entity;
 using System.Linq;
-namespace SuitSupplyAssessment.ProductCatalog.DataModel
+using SuitSupplyAssessment.ProductCatalog.Model;
+namespace SuitSupplyAssessment.ProductCatalog.DataAccess
 {
 
 
@@ -9,7 +10,7 @@ namespace SuitSupplyAssessment.ProductCatalog.DataModel
     {
         // Your context has been configured to use a 'Product' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'SuitSupplyAssesment.Product.DataModel.Product' database on your LocalDb instance. 
+        // 'SuitSupplyAssesment.Product.DataAccess.Product' database on your LocalDb instance. 
         // 
         // If you wish to target a different database and/or database provider, modify the 'Product' 
         // connection string in the application configuration file.
@@ -20,7 +21,7 @@ namespace SuitSupplyAssessment.ProductCatalog.DataModel
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Product>().HasIndex(p => new { p.Code }).IsUnique(true);
+            //Database.SetInitializer<ProductContext>(null);
             //base.OnModelCreating(modelBuilder);
         }
         public virtual DbSet<Product> Products { get; set; }
