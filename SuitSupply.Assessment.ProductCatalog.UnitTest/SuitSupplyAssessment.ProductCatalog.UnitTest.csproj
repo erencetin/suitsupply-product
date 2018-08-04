@@ -53,9 +53,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SuitSupplyAssesment.Product.DataModel\SuitSupplyAssessment.ProductCatalog.DataModel.csproj">
+    <ProjectReference Include="..\SuitSupplyAssesment.Product.DataModel\SuitSupplyAssessment.ProductCatalog.DataAccess.csproj">
       <Project>{05C9CCC4-D897-4197-A8B7-F7A91D6F50A5}</Project>
-      <Name>SuitSupplyAssessment.ProductCatalog.DataModel</Name>
+      <Name>SuitSupplyAssessment.ProductCatalog.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
