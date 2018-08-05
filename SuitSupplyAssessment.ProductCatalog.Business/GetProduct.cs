@@ -16,6 +16,10 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
         {
             productContext = new ProductContext();
         }
+        public GetProduct(ProductContext productContext)
+        {
+            this.productContext = productContext;
+        }
         public Func<Product,bool> InputArgument { get ; set ; }
         public List<Product> OutputArgument { get; set; }
 

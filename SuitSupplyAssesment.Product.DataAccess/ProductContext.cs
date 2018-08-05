@@ -19,11 +19,11 @@ namespace SuitSupplyAssessment.ProductCatalog.DataAccess
         {
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //Database.SetInitializer<ProductContext>(null);
-            //base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<ProductContext>(null);
+        //    base.OnModelCreating(modelBuilder);
+        //}
         public virtual DbSet<Product> Products { get; set; }
     }
 

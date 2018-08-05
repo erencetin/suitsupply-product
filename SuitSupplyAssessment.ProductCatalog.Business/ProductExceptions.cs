@@ -21,5 +21,9 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
        }
         
     }
+    public class ProductPriceValidationException : Exception
+    {
+        public ProductPriceValidationException() : base("Price must be higher than zero.") { }
+    }
 
 }

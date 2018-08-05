@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="BusinessBase.cs" />
     <Compile Include="ConfirmProductPrice.cs" />
+    <Compile Include="RemoveProduct.cs" />
+    <Compile Include="UpdateProduct.cs" />
     <Compile Include="ValidateProductPrice.cs" />
     <Compile Include="CreateProduct.cs" />
     <Compile Include="GetProduct.cs" />

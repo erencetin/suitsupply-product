@@ -16,13 +16,20 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
             productContext = new ProductContext();
             getProduct = new GetProduct();
         }
+        public CreateProduct(ProductContext productContext)
+        {
+            this.productContext = productContext;
+            getProduct = new GetProduct();
+        }
         public Product InputArgument { get; set; }
         public Product OutputArgument { get; set; }
 
         public void Execute()
         {
             CheckProductExists();
-
+            ValidatePrice();
+            this.InputArgument.LastUpdated = DateTime.Now;
+            this.OutputArgument = productContext.Products.Add(this.InputArgument);
 
         }
         private void CheckProductExists()
@@ -34,7 +41,11 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
         }
         private void ValidatePrice()
         {
-
+            ValidateProductPrice validateProductPrice = new ValidateProductPrice();
+            validateProductPrice.InputArgument = this.InputArgument;
+            validateProductPrice.Execute();
+            if (!validateProductPrice.OutputArgument)
+                throw new ProductPriceValidationException();
         }
     }
 }
