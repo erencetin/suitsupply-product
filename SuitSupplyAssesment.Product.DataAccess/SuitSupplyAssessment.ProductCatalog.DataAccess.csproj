@@ -49,15 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201808012232150_InitialCreate.cs" />
-    <Compile Include="Migrations\201808012232150_InitialCreate.Designer.cs">
-      <DependentUpon>201808012232150_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808042301036_ChangingColumn.cs" />
-    <Compile Include="Migrations\201808042301036_ChangingColumn.Designer.cs">
-      <DependentUpon>201808042301036_ChangingColumn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProductContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,14 +57,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808012232150_InitialCreate.resx">
-      <DependentUpon>201808012232150_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808042301036_ChangingColumn.resx">
-      <DependentUpon>201808042301036_ChangingColumn.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SuitSupplyAssessment.ProductCatalog.Model\SuitSupplyAssessment.ProductCatalog.Model.csproj">

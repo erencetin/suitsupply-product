@@ -14,11 +14,7 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
         private ProductContext productContext;
         public GetProduct()
         {
-            productContext = new ProductContext();
-        }
-        public GetProduct(ProductContext productContext)
-        {
-            this.productContext = productContext;
+            productContext = ProductContext.GetContextInstance();
         }
         public Func<Product,bool> InputArgument { get ; set ; }
         public List<Product> OutputArgument { get; set; }

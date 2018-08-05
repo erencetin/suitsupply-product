@@ -7,27 +7,20 @@ using SuitSupplyAssessment.ProductCatalog.Model;
 using SuitSupplyAssessment.ProductCatalog.DataAccess;
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class RemoveProduct : IBusiness<Product, Product>
+    public class RemoveProduct : IBusiness<Product, bool>
     {
         private ProductContext productContext;
-        private GetProduct getProduct;
         public RemoveProduct()
         {
-            productContext = new ProductContext();
-            getProduct = new GetProduct();
-        }
-        public RemoveProduct(ProductContext productContext)
-        {
-            this.productContext = productContext;
-            getProduct = new GetProduct();
+            productContext = ProductContext.GetContextInstance();
         }
         public Product InputArgument { get; set; }
-        public Product OutputArgument { get; set; }
+        public bool OutputArgument { get; set; }
 
         public void Execute()
         {
-           this.OutputArgument = productContext.Products.Remove(InputArgument);
-            productContext.SaveChanges();
+            productContext.Products.Remove(this.InputArgument);
+            this.OutputArgument = true;
 
         }
 

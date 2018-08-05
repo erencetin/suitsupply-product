@@ -14,11 +14,18 @@ namespace SuitSupplyAssessment.ProductCatalog.DataAccess
         // 
         // If you wish to target a different database and/or database provider, modify the 'Product' 
         // connection string in the application configuration file.
-        public ProductContext()
-            : base("name=Product")
+        private static ProductContext productContext;
+        private ProductContext()
+            : base("name=ProductCatalog")
         {
         }
+        public static ProductContext GetContextInstance() {
 
+            if (productContext == null)
+                productContext = new ProductContext();
+            return productContext;
+                
+         }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    Database.SetInitializer<ProductContext>(null);

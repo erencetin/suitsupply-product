@@ -43,7 +43,7 @@ namespace SuitSupplyAssessment.ProductCatalog.UnitTest
         };
         bool[] priceValidationExpectedResults = { false, false, true, true, false, false };
         bool[] priceConfirmatinExpectedResults = { false, false, false, true, false, false };
-        
+
         [Test]
         public void ShouldHaveValidPrice()
         {
@@ -71,21 +71,25 @@ namespace SuitSupplyAssessment.ProductCatalog.UnitTest
         {
 
             CreateProduct createProduct = new CreateProduct();
-            Product product1 = new Product { Code = "product code 1" , Name = "product name 1", Price = 111 };
+            Product product1 = new Product { Code = "product code 1", Name = "product name 1", Price = 111 };
             createProduct.InputArgument = product1;
             createProduct.Execute();
             Assert.IsNotNull(createProduct.OutputArgument);
-            
-            
+
+
         }
         [Test]
         public void ShouldPreventCreateProductWithSameProductCode()
         {
-            CreateProduct createProduct = new CreateProduct();
-            Product product2 = new Product { Code = "Product code 1", Name = "Should be prevented", Price = 34 };
-            createProduct.InputArgument = product2;
             try
             {
+                CreateProduct createProduct = new CreateProduct();
+                Product product1 = new Product { Code = "product code 1", Name = "product name 1", Price = 111 };
+                createProduct.InputArgument = product1;
+                createProduct.Execute();
+                CommitDatabaseChanges.Commit();
+                Product product2 = new Product { Code = "product code 1", Name = "Should be prevented", Price = 34 };
+                createProduct.InputArgument = product2;
                 createProduct.Execute();
                 Assert.Fail("There is something wrong! It shouldn't create a product with same product code.");
 
@@ -95,23 +99,123 @@ namespace SuitSupplyAssessment.ProductCatalog.UnitTest
 
                 Assert.Pass();
             }
-             
-        }
 
+        }
+        [TestCase(-115)]
+        [TestCase(0)]
+
+        public void ShouldPreventProductCreateWithZeroOrNegativePrice(decimal price)
+        {
+            try
+            {
+                CreateProduct createProduct = new CreateProduct();
+                Product product1 = new Product { Code = "product code 1", Name = "product name 1", Price = price };
+                createProduct.InputArgument = product1;
+                createProduct.Execute();
+                Assert.Fail("Product creation has been failed because of inconvenient price");
+            }
+            catch (ProductPriceValidationException)
+            {
+
+                Assert.Pass();
+            }
+
+        }
+        [Test]
+        public void ShouldRemoveProduct()
+        {
+            var createdProduct = CreateNewProduct();
+            CommitDatabaseChanges.Commit();
+            RemoveProduct removeProdct = new RemoveProduct();
+            removeProdct.InputArgument = createdProduct;
+            removeProdct.Execute();
+            CommitDatabaseChanges.Commit();
+            Assert.IsTrue(removeProdct.OutputArgument);
+
+        }
+        [Test]
+        public void ShouldUpdateExistentProduct()
+        {
+
+            var createdProduct = CreateNewProduct();
+            UpdateProduct updateProduct = new UpdateProduct();          
+            createdProduct.Name = "Updated";
+            updateProduct.InputArgument = createdProduct;
+            updateProduct.Execute();
+            CommitDatabaseChanges.Commit();
+            GetProduct getProduct = new GetProduct();
+            getProduct.InputArgument = p => p.Name == "Updated";
+            getProduct.Execute();
+            Assert.IsTrue(getProduct.OutputArgument.Count > 0);
+                
+        }
+        [Test]
+        public void ShouldPreventUpdateWithSameProductCode()
+        {
+            var createdProduct = CreateNewProduct();
+            CommitDatabaseChanges.Commit();
+            var createAnotherProduct = CreateNewProduct("product code 2");
+            CommitDatabaseChanges.Commit();
+            createAnotherProduct.Code = "product code 1";
+            UpdateProduct updateProduct = new UpdateProduct();
+            updateProduct.InputArgument = createAnotherProduct;
+            try
+            {
+                updateProduct.Execute();
+                Assert.Fail("Existed product code cannot be updated.");
+            }
+            catch (DuplicateProductException)
+            {
+                Assert.Pass();
+                
+            }
+
+        }
+        [Test]
+        public void ShouldPreventUpdateWithInconvenientPrice()
+        {
+            var createdProduct = CreateNewProduct("product code 1");
+            CommitDatabaseChanges.Commit();
+            UpdateProduct updateProduct = new UpdateProduct();
+            createdProduct.Price = 0;
+            updateProduct.InputArgument = createdProduct;
+            try
+            {
+                updateProduct.Execute();
+                Assert.Fail("Product price should be greater than zero.");
+            }
+            catch (ProductPriceValidationException)
+            {
+                Assert.Pass();
+
+            }
+
+        }
         [TearDown]
         public void CleanChanges()
         {
             GetProduct getProduct = new GetProduct();
-            getProduct.InputArgument = p => p.Code.Contains("Product code");
+            getProduct.InputArgument = p => p.Code.Contains("product code");
             getProduct.Execute();
-            RemoveProduct removeProduct = new RemoveProduct();
-            removeProduct.InputArgument = getProduct.OutputArgument.First();
-            removeProduct.Execute();
-            //foreach (var item in objectSource)
-            //{
-            //    removeProduct.InputArgument = item;
-            //    removeProduct.Execute();
-            //}
+            if (getProduct.OutputArgument != null)
+            {
+                foreach (var item in getProduct.OutputArgument)
+                {
+                    RemoveProduct removeProduct = new RemoveProduct();
+                    removeProduct.InputArgument = item;
+                    removeProduct.Execute();
+                }
+
+            }
+            CommitDatabaseChanges.Commit();
+        }
+        private Product CreateNewProduct(string productCode = "product code 1",decimal productPrice = 444)
+        {
+            CreateProduct createProduct = new CreateProduct();
+            Product product1 = new Product { Code = productCode, Name = "product name 1", Price = productPrice };
+            createProduct.InputArgument = product1;
+            createProduct.Execute();
+            return createProduct.OutputArgument;
         }
 
     }

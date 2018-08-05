@@ -15,12 +15,9 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
         public bool OutputArgument { get; set; }
         public UpdateProduct()
         {
-            productContext = new ProductContext();
+            productContext = ProductContext.GetContextInstance();
         }
-        public UpdateProduct(ProductContext productContext)
-        {
-            this.productContext = productContext;
-        }
+
         public void Execute()
         {
             ValidateProductPrice validateProductPrice = new ValidateProductPrice();
@@ -31,14 +28,13 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
                 GetProduct getProduct = new GetProduct();
                 getProduct.InputArgument = p => p.Code == this.InputArgument.Code;
                 getProduct.Execute();
-                if (getProduct.OutputArgument?.Count>0)
+                if (getProduct.OutputArgument?.Count>0 && getProduct.OutputArgument[0].Id != this.InputArgument.Id)
                 {
-                    this.InputArgument.LastUpdated = DateTime.Now;
-                    productContext.SaveChanges();
+                    throw new DuplicateProductException();
                 }
                 else
                 {
-                    throw new DuplicateProductException();
+                    this.InputArgument.LastUpdated = DateTime.Now;
                 }
             }
             else

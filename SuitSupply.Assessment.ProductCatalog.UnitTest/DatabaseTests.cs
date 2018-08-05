@@ -17,7 +17,7 @@ namespace SuitSupplyAssessment.ProductCatalog.UnitTest
         [OneTimeSetUp]
         public void Init()
         {
-            productContext = new ProductContext();
+            productContext = ProductContext.GetContextInstance();
          //   Database.SetInitializer<ProductContext>(null);
         }
         [Test]

@@ -13,12 +13,7 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
         private GetProduct getProduct;
         public CreateProduct()
         {
-            productContext = new ProductContext();
-            getProduct = new GetProduct();
-        }
-        public CreateProduct(ProductContext productContext)
-        {
-            this.productContext = productContext;
+            productContext = ProductContext.GetContextInstance();
             getProduct = new GetProduct();
         }
         public Product InputArgument { get; set; }
@@ -30,7 +25,7 @@ namespace SuitSupplyAssessment.ProductCatalog.Business
             ValidatePrice();
             this.InputArgument.LastUpdated = DateTime.Now;
             this.OutputArgument = productContext.Products.Add(this.InputArgument);
-
+          
         }
         private void CheckProductExists()
         {

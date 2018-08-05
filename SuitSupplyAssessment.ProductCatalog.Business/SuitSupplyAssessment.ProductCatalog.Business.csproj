@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessBase.cs" />
+    <Compile Include="CommitChanges.cs" />
     <Compile Include="ConfirmProductPrice.cs" />
     <Compile Include="RemoveProduct.cs" />
     <Compile Include="UpdateProduct.cs" />
