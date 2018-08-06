@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.Produc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.WebApi", "SuitSupplyAssessment.ProductCatalog.WebApi\SuitSupplyAssessment.ProductCatalog.WebApi.csproj", "{5FA4E193-F3C9-4FFC-B012-E8C83AE0B522}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuitSupplyAssessment.ProductCatalog.WebUI", "SuitsupplyAssessment.ProductCatalog.WebUI\SuitSupplyAssessment.ProductCatalog.WebUI.csproj", "{3F2522A9-02F0-4E16-A59E-A1EA3D356FC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,12 +41,16 @@ Global
 		{5FA4E193-F3C9-4FFC-B012-E8C83AE0B522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA4E193-F3C9-4FFC-B012-E8C83AE0B522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA4E193-F3C9-4FFC-B012-E8C83AE0B522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2522A9-02F0-4E16-A59E-A1EA3D356FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2522A9-02F0-4E16-A59E-A1EA3D356FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2522A9-02F0-4E16-A59E-A1EA3D356FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2522A9-02F0-4E16-A59E-A1EA3D356FC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 		SolutionGuid = {7610573D-2A52-4AFB-8C39-97B397C1BAFB}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
