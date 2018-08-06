@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class GetProduct : IBusiness<Func<Product,bool>, List<Product>>
+    public class GetProduct : IGetProduct
     {
         private const string ProductNotFound = "Product has not been found";
         private ProductContext productContext;

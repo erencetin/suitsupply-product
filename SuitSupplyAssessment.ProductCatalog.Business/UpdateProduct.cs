@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class UpdateProduct : IBusiness<Product, bool>
+    public class UpdateProduct : IUpdateProduct
     {
         private ProductContext productContext;
         public Product InputArgument { get; set; }

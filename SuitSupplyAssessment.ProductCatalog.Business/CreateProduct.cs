@@ -7,7 +7,7 @@ using SuitSupplyAssessment.ProductCatalog.Model;
 using SuitSupplyAssessment.ProductCatalog.DataAccess;
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class CreateProduct : IBusiness<Product, Product>
+    public class CreateProduct : ICreateProduct
     {
         private ProductContext productContext;
         private GetProduct getProduct;

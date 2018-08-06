@@ -7,7 +7,7 @@ using SuitSupplyAssessment.ProductCatalog.Model;
 using SuitSupplyAssessment.ProductCatalog.DataAccess;
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class ValidateProductPrice : IBusiness<Product, bool>
+    public class ValidateProductPrice : IValidateProductPrice
     {
         public ValidateProductPrice()
         {

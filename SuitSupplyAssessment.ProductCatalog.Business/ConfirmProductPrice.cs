@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class ConfirmProductPrice : IBusiness<Product, bool>
+    public class ConfirmProductPrice : IConfirmProductPrice
     {
         public Product InputArgument { get; set; }
         public bool OutputArgument { get; set; }

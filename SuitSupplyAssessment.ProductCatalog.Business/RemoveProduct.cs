@@ -7,7 +7,7 @@ using SuitSupplyAssessment.ProductCatalog.Model;
 using SuitSupplyAssessment.ProductCatalog.DataAccess;
 namespace SuitSupplyAssessment.ProductCatalog.Business
 {
-    public class RemoveProduct : IBusiness<Product, bool>
+    public class RemoveProduct : IRemoveProduct
     {
         private ProductContext productContext;
         public RemoveProduct()

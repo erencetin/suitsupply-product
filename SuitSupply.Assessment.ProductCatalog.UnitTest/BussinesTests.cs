@@ -1,13 +1,6 @@
 ﻿using NUnit.Framework;
 using SuitSupplyAssessment.ProductCatalog.Business;
-using SuitSupplyAssessment.ProductCatalog.DataAccess;
 using SuitSupplyAssessment.ProductCatalog.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SuitSupplyAssessment.ProductCatalog.UnitTest
 {
     [TestFixture]
