@@ -54,20 +54,35 @@ namespace SuitSupplyAssessment.ProductCatalog.WebUI.Controllers
         [HttpPost]
         public ActionResult Create(CreateProductViewModel productViewModel)
         {
-
-            if (productViewModel.File != null && productViewModel.File.ContentLength > 0)
+            try
             {
-                var fileName = Path.GetFileName(productViewModel.File.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images"), fileName);
-                productViewModel.File.SaveAs(path);
-                productViewModel.ProductObject.Photo = fileName;
-                createProduct.InputArgument = productViewModel.ProductObject;
-                createProduct.Execute();
-                CommitDatabaseChanges.Commit();
+                if (productViewModel.File != null && productViewModel.File.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(productViewModel.File.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images"), fileName);
+                    productViewModel.File.SaveAs(path);
+                    productViewModel.Photo = fileName;
+                    createProduct.InputArgument = new Product { Code = productViewModel.Code, Name = productViewModel.Name, Price = productViewModel.Price, Photo = productViewModel.File.FileName };
+                    createProduct.Execute();
+                    CommitDatabaseChanges.Commit();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("File", "Please upload a photo for the product.");
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("", ex.Message);
             }
 
+            return View();
 
-            return RedirectToAction("Index");
+
+
 
         }
 
@@ -77,26 +92,44 @@ namespace SuitSupplyAssessment.ProductCatalog.WebUI.Controllers
 
             getProduct.InputArgument = p => p.Id == id;
             getProduct.Execute();
-            return View(getProduct.OutputArgument.Single());
+            var retrievedProduct = getProduct.OutputArgument.Single();
+            CreateProductViewModel viewModel = new CreateProductViewModel
+            {
+                Code = retrievedProduct.Code,
+                Name = retrievedProduct.Name,
+                Photo = retrievedProduct.Photo,
+                Price = retrievedProduct.Price
+            };
+            return View(viewModel);
 
         }
 
         // POST: Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Product product)
+        public ActionResult Edit(int id, CreateProductViewModel product)
         {
+            try
+            {
+              
+                    getProduct.InputArgument = p => p.Id == id;
+                    getProduct.Execute();
+                    var retrievedProduct = getProduct.OutputArgument.Single();
+                    retrievedProduct.Code = product.Code;
+                    retrievedProduct.Name = product.Name;
+                    retrievedProduct.Price = product.Price;
+                    updateProduct.InputArgument = retrievedProduct;
+                    updateProduct.Execute();
+                    CommitDatabaseChanges.Commit();
+                    return RedirectToAction("Index");
+             
 
-            getProduct.InputArgument = p => p.Id == id;
-            getProduct.Execute();
-            var retrievedProduct = getProduct.OutputArgument.Single();
-            retrievedProduct.Code = product.Code;
-            retrievedProduct.Name = product.Name;
-            retrievedProduct.Photo = product.Photo;
-            retrievedProduct.Price = product.Price;
-            updateProduct.InputArgument = retrievedProduct;
-            updateProduct.Execute();
-            CommitDatabaseChanges.Commit();
-            return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("", ex.Message);
+            }
+            return View();
 
         }
 

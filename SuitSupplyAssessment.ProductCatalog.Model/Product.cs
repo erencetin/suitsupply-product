@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-
 namespace SuitSupplyAssessment.ProductCatalog.Model
 {
     public class Product
